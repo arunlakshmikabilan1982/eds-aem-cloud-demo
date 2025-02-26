@@ -1,0 +1,72 @@
+.tabs ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+  justify-content: center;
+}
+
+.tabs li {
+  box-sizing: border-box;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  padding: .5rem;
+}
+
+.tabs li button {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  max-height: 3pc;
+  min-width: 3pc;
+  border-radius: 0;
+  background: none;
+  color: rgba(0,0,0,.4);
+}
+
+.tabs li button.active {
+  border: none;
+  color: #000;
+}
+
+body.activity main {
+  grid-auto-flow: column;
+  grid-template-rows: auto auto min-content minmax(auto, 100%);
+  grid-template-areas:
+      "bread bread bread bread"
+      "hero hero hero hero"
+      "padleft left tabs padright"
+      "padleft left main padright";
+}
+
+body.activity main .tabs-container {
+  grid-area: tabs;
+  padding-bottom: 0;
+}
+
+body.activity main [data-tab] {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.activity main [data-tab] :first-child {
+  margin-top: 0;
+}
+
+.tab-content-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.tab-item.active {
+  transform: translateX(0);
+}
