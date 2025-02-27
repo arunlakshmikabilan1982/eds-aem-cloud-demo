@@ -15,7 +15,8 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "carousel"
     ]
   },
   {
@@ -42,7 +43,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "carousel"
     ]
   }
 ]
