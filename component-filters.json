@@ -17,7 +17,8 @@
       "columns",
       "fragment",
       "carousel",
-      "quote"
+      "quote",
+      "services"
     ]
   },
   {
@@ -30,6 +31,12 @@
     "id": "carousel",
     "components": [
       "slide"
+    ]
+  },
+  {
+    "id": "services",
+    "components": [
+      "serviceitem"
     ]
   },
   {
