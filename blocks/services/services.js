@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
 
   const rowDiv = document.createElement('div');
@@ -5,6 +7,7 @@ export default function decorate(block) {
 
   [...block.children].forEach((row) => {
     const colDiv = document.createElement('div');
+    moveInstrumentation(rowDiv,colDiv);
     colDiv.setAttribute('class', 'col-md-4 col-sm-6 single-service-item');
     const iconClass = row.children[0].textContent;
     const content = row.children[1].textContent;
@@ -16,7 +19,7 @@ export default function decorate(block) {
 
     console.log(iconClass);
     console.log(content);
-
+    
     rowDiv.append(colDiv);
 
   });

@@ -1,97 +1,52 @@
-export function createTabs($block) {
-  const $ul = $block.querySelector('ul');
-  if (!$ul) {
-    return null;
-  }
+// eslint-disable-next-line import/no-unresolved
+import { toClassName } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
-  /** @type TabInfo[] */
-  const tabs = [...$ul.querySelectorAll('li')].map(($li) => {
-    const title = $li.textContent;
-    const name = title.toLowerCase().trim();
-    return {
-      title,
-      name,
-      $tab: $li,
-    };
-  });
+export default async function decorate(block) {
+  // build tablist
+  const tablist = document.createElement('div');
+  tablist.className = 'tabs-list';
+  tablist.setAttribute('role', 'tablist');
 
-  // move $ul below section div
-  $block.replaceChildren($ul);
+  // decorate tabs and tabpanels
+  const tabs = [...block.children].map((child) => child.firstElementChild);
+  tabs.forEach((tab, i) => {
+    const id = toClassName(tab.textContent);
 
-  // search referenced sections and move them inside the tab-container
-  const $sections = document.querySelectorAll('[data-tab]');
+    // decorate tabpanel
+    const tabpanel = block.children[i];
+    tabpanel.className = 'tabs-panel';
+    tabpanel.id = `tabpanel-${id}`;
+    tabpanel.setAttribute('aria-hidden', !!i);
+    tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
+    tabpanel.setAttribute('role', 'tabpanel');
 
-  // Wrap sections in a container to allow sliding
-  const $tabContentWrapper = document.createElement('div');
-  $tabContentWrapper.classList.add('tab-content-wrapper');
-  $sections.forEach(($tabContent) => {
-    const name = $tabContent.dataset.tab.toLowerCase().trim();
-    const tab = tabs.find((t) => t.name === name);
-    if (tab) {
-      $tabContent.classList.add('tab-item');
-      tab.$content = $tabContent;
-      $tabContentWrapper.appendChild($tabContent);
-    }
-  });
+    // build tab button
+    const button = document.createElement('button');
+    button.className = 'tabs-tab';
+    button.id = `tab-${id}`;
 
-  $block.appendChild($tabContentWrapper);
+    moveInstrumentation(tab.parentElement, tabpanel.lastElementChild);
+    button.innerHTML = tab.innerHTML;
 
-  return tabs;
-}
-
-/**
- * @param {HTMLElement} $block
- */
-export default function decorate($block) {
-  const tabs = createTabs($block);
-  const $tabContentWrapper = $block.querySelector('.tab-content-wrapper');
-
-  tabs.forEach((tab, index) => {
-    const $button = document.createElement('button');
-    const { $tab, title, name } = tab;
-    $button.textContent = title;
-    $button.setAttribute('data-tab-index', index);
-    $tab.replaceChildren($button);
-
-    tab.$content.setAttribute('data-tab-index', index);
-
-    $button.addEventListener('click', () => {
-      const $activeButton = $block.querySelector('button.active');
-      const $activeContent = $tabContentWrapper.querySelector('.tab-item.active');
-      const blockPosition = $block.getBoundingClientRect().top;
-      const offsetPosition = blockPosition + window.scrollY - 80;
-
-      if ($activeButton !== $button) {
-        $activeButton.classList.remove('active');
-        $button.classList.add('active');
-
-        if ($activeContent) {
-          $activeContent.classList.remove('active');
-          setTimeout(() => {
-            tabs.forEach((t) => {
-              if (name === t.name) {
-                t.$content.classList.add('active');
-              }
-            });
-          }, 300); // Wait for the sliding effect to complete
-        } else {
-          tabs.forEach((t) => {
-            if (name === t.name) {
-              t.$content.classList.add('active');
-            }
-          });
-        }
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-      }
+    button.setAttribute('aria-controls', `tabpanel-${id}`);
+    button.setAttribute('aria-selected', !i);
+    button.setAttribute('role', 'tab');
+    button.setAttribute('type', 'button');
+    button.addEventListener('click', () => {
+      block.querySelectorAll('[role=tabpanel]').forEach((panel) => {
+        panel.setAttribute('aria-hidden', true);
+      });
+      tablist.querySelectorAll('button').forEach((btn) => {
+        btn.setAttribute('aria-selected', false);
+      });
+      tabpanel.setAttribute('aria-hidden', false);
+      button.setAttribute('aria-selected', true);
     });
-
-    if (index === 0) {
-      $button.classList.add('active');
-      tab.$content.classList.add('active');
-    }
+    tablist.append(button);
+    tab.remove();
+    moveInstrumentation(button.querySelector('p'), null);
   });
+
+  block.prepend(tablist);
 }
