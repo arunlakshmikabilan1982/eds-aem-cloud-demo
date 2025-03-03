@@ -69,12 +69,6 @@
     ]
   },
   {
-    "id": "services",
-    "components": [
-      "services-item"
-    ]
-  },
-  {
     "id": "table",
     "components": [
       "table-row"
