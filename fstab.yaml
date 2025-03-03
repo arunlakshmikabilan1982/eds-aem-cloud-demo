@@ -1,3 +1,6 @@
 mountpoints:
-  /: https://drive.google.com/drive/u/3/folders/1wK6hQOmVInvGopx9WMHvDrmHlPsjHy7c
+  /:
+    url: "https://author-p92368-e968987.adobeaemcloud.com/bin/franklin.delivery/arunlakshmikabilan1982/eds-aem-cloud-demo/main"
+    type: "markup"
+    suffix: ".html"	
 
