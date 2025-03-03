@@ -9,13 +9,24 @@
     "id": "section",
     "components": [
       "text",
+      "accordion",
       "image",
       "button",
+      "carousel",
       "title",
+      "services",
+      "form",
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "quote"
     ]
   },
   {
