@@ -316,6 +316,25 @@
     ]
   },
   {
+    "id": "services-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "icon_class",
+        "label": "Icon Class",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "content_text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "table",
     "fields": [
       {
