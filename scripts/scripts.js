@@ -78,7 +78,7 @@ export async function getGraphQLSitecore() {
   
   const responseData  = await res.json();
   console.log("responseData:",responseData?.data.item.children.results);
-  
+  return responseData?.data.item.children.results;
   }
 
 /**
