@@ -26,7 +26,8 @@
       "text",
       "title",
       "video",
-      "quote"
+      "quote",
+      "articles"
     ]
   },
   {
@@ -100,6 +101,10 @@
   },
   {
     "id": "video",
+    "components": []
+  },
+  {
+    "id": "articles",
     "components": []
   }
 ]

@@ -540,5 +540,17 @@
         "label": "Placeholder Image Alt Text"
       }
     ]
+  },
+  {
+    "id": "articles",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "articleTitle",
+        "value": "",
+        "label": "ArticleTitle"
+      }
+    ]
   }
 ]
