@@ -115,30 +115,15 @@
           }
         },
         {
-          "title": "Services",
-          "id": "services",
+          "title": "Articles",
+          "id": "articles",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Services",
-                  "filter": "services"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Services Item",
-          "id": "services-item",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Services Item",
-                  "model": "services-item"
+                  "name": "Articles",
+                  "model": "articles"
                 }
               }
             }
@@ -307,6 +292,36 @@
                   "name": "Search",
                   "model": "search",
                   "filter": "search"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Services",
+          "id": "services",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Services",
+                  "filter": "services"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Services Item",
+          "id": "services-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Services Item",
+                  "model": "services-item"
                 }
               }
             }

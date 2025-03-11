@@ -9,24 +9,13 @@
     "id": "section",
     "components": [
       "text",
-      "accordion",
       "image",
       "button",
-      "carousel",
       "title",
-      "services",
-      "form",
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "search",
-      "tabs",
-      "table",
-      "text",
-      "title",
-      "video",
-      "quote"
+      "fragment"
     ]
   },
   {
@@ -36,10 +25,8 @@
     ]
   },
   {
-    "id": "services",
-    "components": [
-      "services-item"
-    ]
+    "id": "articles",
+    "components": []
   },
   {
     "id": "cards",
@@ -66,6 +53,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "services",
+    "components": [
+      "services-item"
     ]
   },
   {
