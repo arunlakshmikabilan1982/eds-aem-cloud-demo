@@ -9,25 +9,24 @@
     "id": "section",
     "components": [
       "text",
-       "accordion",
-       "image",
-       "button",
-       "carousel",
-       "title",
-       "services",
-       "form",
-       "hero",
-       "cards",
-       "columns",
-       "fragment",
-       "search",
-       "tabs",
-       "table",
-       "text",
-       "title",
-       "video",
-       "quote",
-       "articles"
+      "accordion",
+      "image",
+      "button",
+      "carousel",
+      "title",
+      "services",
+      "form",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "quote"
     ]
   },
   {
@@ -37,8 +36,10 @@
     ]
   },
   {
-    "id": "articles",
-    "components": []
+    "id": "services",
+    "components": [
+      "services-item"
+    ]
   },
   {
     "id": "cards",
@@ -65,12 +66,6 @@
       "image",
       "button",
       "title"
-    ]
-  },
-  {
-    "id": "services",
-    "components": [
-      "services-item"
     ]
   },
   {
