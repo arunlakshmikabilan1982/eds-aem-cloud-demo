@@ -46,6 +46,41 @@ export function moveInstrumentation(from, to) {
   );
 }
 
+export async function getGraphQLSitecore() {
+  const query = `{
+    item(path: "{9A4352E6-003B-4F8A-B1B8-8FEDB3B6B2F2}",language:"en") {
+       children {
+       results{
+         Heading:field(name: "Heading") {
+           value
+         }
+        Content:field(name: "Content") {
+           value
+         }
+        
+       Image:field(name: "Image") {
+         ...on ImageField{
+           src
+         }
+         }
+       }
+       }
+     }
+   }`;
+  const res = await fetch('https://edge.sitecorecloud.io/api/graphql/v1', {
+    method: "post",
+    headers: {
+         "Content-Type": "application/json",
+         "sc_apiKey": "U1d1S1VZRFlrQlNvQngwRGFvMmlCZUpMUDU5TmEzb3hOMGdJalF1Q0VWVT18Y29uY2VudHJpeDk2ZWQtZGVtb3BvcnRhbDAyYjAtcWEwNmVmLWI4ZmI="
+    },
+    body: JSON.stringify({ query })
+  })
+  
+  const responseData  = await res.json();
+  console.log("responseData:",responseData?.data.item.children.results);
+  
+  }
+
 /**
  * load fonts.css and set a session storage flag
  */
@@ -120,7 +155,7 @@ async function loadLazy(doc) {
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
-
+  getGraphQLSitecore();
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
