@@ -1,8 +1,8 @@
 {
   "mappings": [
     "/content/eds-aem-cloud-demo/:/",
-    "/content/aem-boilerplate/configuration:/.helix/config.json",
-    "/content/aem-boilerplate/metadata:/metadata.json"
+    "/content/eds-aem-cloud-demo/configuration:/.helix/config.json",
+    "/content/eds-aem-cloud-demo/metadata:/metadata.json"
   ],
   "includes": [
     "/content/eds-aem-cloud-demo/"
